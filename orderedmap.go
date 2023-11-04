@@ -42,6 +42,15 @@ func New() *OrderedMap {
 	return &o
 }
 
+func NewFromKeysValues(keys []string, values map[string]interface{}) *OrderedMap {
+	if len(keys) != len(values) {
+		panic("key's length must match the values' length")
+	}
+	o := New()
+	o.keys, o.values = keys, values
+	return o
+}
+
 func (o *OrderedMap) SetEscapeHTML(on bool) {
 	o.escapeHTML = on
 }
